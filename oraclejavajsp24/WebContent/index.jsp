@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>01메인화면</title>
+<title>메인화면</title>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/main.css" />
 												<!-- /layout02/main.css -->
 </head>
