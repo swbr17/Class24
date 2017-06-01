@@ -1,5 +1,5 @@
 package kr.or.ksmart.dao;
-
+git config --global core.quotepath false
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,12 +10,13 @@ import kr.or.ksmart.driverdb.DriverDB;
 import kr.or.ksmart.dto.Member;
 
 public class Mdao {
+	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ArrayList<Member> alm = null;
 	ResultSet rs = null;
 	
-	//07 ·Î±×ÀÎ ¸Þ¼­µå ¼±¾ð
+	//07 ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String mLoginPro(String input_id, String input_pw) throws SQLException, ClassNotFoundException{
 		String login = null;
 		DriverDB db = new DriverDB();
@@ -32,30 +33,30 @@ public class Mdao {
 		pstmt.setString(1, input_id);
 		rs = pstmt.executeQuery();		
 		if(rs.next()){
-			System.out.println("01¾ÆÀÌµð ÀÏÄ¡");
-			login = "01¾ÆÀÌµð ÀÏÄ¡";
+			System.out.println("01ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ä¡");
+			login = "01ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ä¡";
 			dbid = rs.getString("ora_id");
 			dbpw = rs.getString("ora_pw");
 			dblevel = rs.getString("ora_level");
 			dbname = rs.getString("ora_name");
 			if(input_pw.equals(dbpw)){
-				System.out.println("03·Î±×ÀÎ ¼º°ø");
-				login = "03·Î±×ÀÎ ¼º°ø";
+				System.out.println("03ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+				login = "03ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½";
 			
 			}else{
-				System.out.println("04ºñ¹ø ºÒÀÏÄ¡");
-				login = "04ºñ¹ø ºÒÀÏÄ¡";
+				System.out.println("04ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡");
+				login = "04ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡";
 			}
 		}else{
-			System.out.println("02¾ÆÀÌµð ºÒÀÏÄ¡");
-			login = "02¾ÆÀÌµð ºÒÀÏÄ¡";
+			System.out.println("02ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡");
+			login = "02ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡";
 		}
 		return login;
 	}
 	
-	//06 °Ë»ö Á¶È¸ ¸Þ¼­µå ¼±¾ð
+	//06 ï¿½Ë»ï¿½ ï¿½ï¿½È¸ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public ArrayList<Member> mSearch(String search) throws ClassNotFoundException, SQLException{
-		System.out.println("06 È¸¿ø °Ë»ö ¸Þ¼­µå ¼±¾ð");
+		System.out.println("06 È¸ï¿½ï¿½ ï¿½Ë»ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		alm = new ArrayList<Member>();
 		DriverDB db = new DriverDB();
 		conn = db.driverDbcon();		
@@ -82,9 +83,9 @@ public class Mdao {
 
 	}
 	
-	//05 »èÁ¦Ã³¸® ¸Þ¼­µå ¼±¾ð
+	//05 ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void mDelete(String ora_id) throws ClassNotFoundException, SQLException{
-		System.out.println("05 »èÁ¦Ã³¸® ¸Þ¼­µå ¼±¾ð Mdao.java");
+		System.out.println("05 ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Mdao.java");
 		DriverDB db = new DriverDB();
 		conn = db.driverDbcon();
 		pstmt = conn.prepareStatement("DELETE FROM oracle_member WHERE ora_id=?");
@@ -94,9 +95,9 @@ public class Mdao {
 		if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	}
 	
-	//04 ¼öÁ¤ ¸Þ¼­µå ¼±¾ð
+	//04 ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void mUpdate(Member m) throws SQLException, ClassNotFoundException{
-		System.out.println("04 ¼öÁ¤ ¸Þ¼­µå ¼±¾ð Mdao.java");
+		System.out.println("04 ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Mdao.java");
 		DriverDB db = new DriverDB();
 		conn = db.driverDbcon();	
 		pstmt = conn.prepareStatement(
@@ -113,7 +114,7 @@ public class Mdao {
 		pstmt.executeUpdate();
 	}
 	
-	//03 ÇÑ¸íÀÇ È¸¿øÁ¤º¸ Á¶È¸ ¸Þ¼­µå ¼±¾ð(¼öÁ¤È­¸é¿¡ º¸¿©ÁÖ±âÀ§ÇØ)
+	//03 ï¿½Ñ¸ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½)
 	public Member mSelectforUpdate(String ora_id) throws ClassNotFoundException, SQLException{
 		System.out.println("03 mSelectforUpdate Mdao.java");
 		Member m = null;
@@ -136,9 +137,9 @@ public class Mdao {
 		return m;
 	}
 	
-	//02 ÀüÃ¼È¸¿ø Á¶È¸ ¸Þ¼­µå ¼±¾ð
+	//02 ï¿½ï¿½Ã¼È¸ï¿½ï¿½ ï¿½ï¿½È¸ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public ArrayList<Member> mAllSelect() throws ClassNotFoundException, SQLException{
-		System.out.println("02 ÀüÃ¼È¸¿ø Á¶È¸ ¸Þ¼­µå ¼±¾ð Mdao.java");
+		System.out.println("02 ï¿½ï¿½Ã¼È¸ï¿½ï¿½ ï¿½ï¿½È¸ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Mdao.java");
 		alm = new ArrayList<Member>();
 		DriverDB db = new DriverDB();
 		conn = db.driverDbcon();		
@@ -158,9 +159,9 @@ public class Mdao {
 		if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		return alm;
 	}
-	//01 mInsert ¸Þ¼­µå ¼±¾ð
+	//01 mInsert ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void mInsert(Member m,Connection conn) throws SQLException{
-		System.out.println("01_01ÀÔ·ÂÃ³¸®¸Þ¼­µå ¼±¾ð Mdao.java");
+		System.out.println("01_01ï¿½Ô·ï¿½Ã³ï¿½ï¿½ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Mdao.java");
 		String query = "INSERT INTO ORACLE_MEMBER (ora_id, ora_pw, ora_level, ora_name, ora_email) VALUES (?, ?, ?, ?, ?)";
 		pstmt = conn.prepareStatement(query);
 		System.out.println(pstmt + "<-- pstmt 1");
