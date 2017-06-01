@@ -1,5 +1,4 @@
 package kr.or.ksmart.dao;
-git config --global core.quotepath false
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
