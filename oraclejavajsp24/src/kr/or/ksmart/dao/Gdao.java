@@ -1,5 +1,6 @@
 package kr.or.ksmart.dao;
 
 public class Gdao {
-	//01 gInsert¸Þ¼­µå¼±¾ð
+	//01 gInsert ë©”ì„œë“œì„ ì–¸
+	
 }
